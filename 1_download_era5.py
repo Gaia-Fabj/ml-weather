@@ -37,7 +37,7 @@ for name, (dataset, variable) in variables.items():
         "day":   DAYS,
         "time":  "12:00",
         "area":  AREA,
-        "grid":  [1.0, 1.0],
+        "grid":  [0.25, 0.25],
         "format": "netcdf",
     }
     if dataset == "reanalysis-era5-pressure-levels":

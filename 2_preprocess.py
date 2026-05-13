@@ -36,9 +36,9 @@ print("  t850 variables:", list(t850_ds.data_vars))
 
 # extract the first data variable from each dataset automatically
 def get_array(ds):
-    varname = [v for v in ds.data_vars][0]
-    arr = ds[varname].values.astype(np.float32)
-    # if 4D (time, level, lat, lon), squeeze the level dimension
+    skip = {"number", "expver", "time", "latitude", "longitude", "level"}
+    varname = [v for v in ds.data_vars if v not in skip][0]
+    arr = ds[varname].squeeze().values.astype(np.float32)
     if arr.ndim == 4:
         arr = arr[:, 0]
     return arr
